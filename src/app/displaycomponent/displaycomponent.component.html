@@ -1,0 +1,86 @@
+<div style="padding:10px">
+  
+  <div  class="container">
+      <div class="header">
+          <span>YOUR SHOPPING BAG </span>
+          <span class="hspan">{{productsinCart.length}} ITEMS</span>
+        </div>
+        
+    <table>
+      <tr class="table_header">
+        <th colspan="2">{{productsinCart.length}} ITEMS</th>
+        <th>SIZE</th>
+        <th>QTY</th>
+        <th>Price</th>
+      </tr>
+      <tr class="table_content"*ngFor="let products of productsinCart;let i = index">
+        <td><img src="./assets/T{{i+1}}.jpg"></td>
+        <td><div><b>{{products.p_variation+' '+products.p_name | uppercase}}</b></div>
+        <div style="font-style:italic">Style #:{{products.p_style | uppercase}}</div>
+        <div style="font-style:italic">Color:{{products.p_selected_color.name | uppercase}}</div>
+        <div style="position:relative;top:30px">
+          <a (click)="openModal()">EDIT |</a>
+          <a>REMOVE |</a>
+          <a>SAVE </a>
+        </div></td>
+        <td ><div class="prodsize">{{products.p_selected_size.code | uppercase}}</div></td>
+        <td ><div class="prodquantity">{{products.p_quantity}}</div></td>
+        <td ><div class="prodprice">{{products.c_currency+' '+products.p_price }}</div></td>
+      </tr>
+      <tr  class="table_mobile" *ngFor="let products of productsinCart;let i = index">
+        <td colspan="2"><img src="./assets/T{{i+1}}.jpg">
+          <div style="position:relative;top:30px;text-align:center">
+              <span (click)="openModal()">EDIT |</span>
+              <span>REMOVE |</span>
+              <span>SAVE</span>
+            </div></td>
+        <td><div><b>{{products.p_variation+' '+products.p_name | uppercase}}</b></div>
+          <div style="font-style:italic">Style #:{{products.p_style | uppercase}}</div>
+          <div style="font-style:italic">Color:{{products.p_selected_color.name | uppercase}}</div>
+          <div class="prodsize">SIZE:{{products.p_selected_size.code | uppercase}}</div>
+          <div class="prodquantity">QTY:{{products.p_quantity}}</div>
+          <div class="prodprice">{{products.c_currency+' '+products.p_price}}</div>
+          </td>
+      </tr>
+      
+    </table>
+    
+  </div>
+
+  <div class="container">
+    
+      <table >
+        <tr>
+        <td><div><b>Need help <br>or have questions?</b></div><br><br>
+        <div>Call Customer Services At<br>1-800-555-5555</div></td>
+        <td></td>
+        <td colspan="2"><div style="border-bottom:5px solid gray"><span>ENTER PROMOTIONCODE OR GIFT CARD</span>
+        <input type="text"><input class ="btn"  type="button" value="APPLY"></div>
+      <br>
+      <div><span>CONTINUE SHOPPING</span><input style="background-color:#006890;color:white" class ="btn" type="button" value="CHECKOUT"></div></td>
+      </tr>
+      </table>
+    
+  </div>
+
+</div>
+
+
+<div id="myModal" class="modal" >
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close" id="close" (click)="closeModal()">&times;</span>
+      <div class="row">
+        <div class="col-sm-3" style="text-align:center">
+          <p>Paisley Jeans</p>
+          <p>$21.00</p>
+          <input style="background-color:#006890;color:white" class ="btn" type="button" value="EDIT">
+        </div>
+        <div class="col-sm-9">
+          <img src="./assets/P1.jpg" width="300px" height="300px">
+        </div>
+      </div>
+    </div>
+  
+  </div>
